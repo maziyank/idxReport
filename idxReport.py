@@ -1,4 +1,4 @@
-import requests 
+import requests
 import json
 import zipfile
 import tempfile
@@ -42,7 +42,7 @@ class idxReport:
         return '_'.join([code, period, str(year)])
 
     def downloadReport(self, code, period, year, saveToDir = None):        
-        saveDir = os.path.join(tempfile.gettempdir(), 'idxReport') if saveToDir == None else saveDir;
+        saveDir = os.path.join(tempfile.gettempdir(), 'idxReport') if saveToDir == None else saveToDir
         url = self.getReport(code, period, year)['File_Path']
         r = requests.get(url, stream=True)
         filePath = os.path.join(saveDir, self._genFileName(code, period, year)) + '.zip'
